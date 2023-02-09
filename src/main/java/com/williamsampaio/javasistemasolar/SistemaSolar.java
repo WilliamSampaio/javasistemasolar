@@ -45,6 +45,8 @@ public class SistemaSolar extends JPanel {
     private final Image urano;    //urano
     private final Image netuno;   //netuno
 
+    private boolean labels;
+
     //variáveis do sol
     int xtam_sol, ytam_sol;
 
@@ -140,6 +142,14 @@ public class SistemaSolar extends JPanel {
     int ytam_netuno;
 
     Timer tempo = new Timer();
+
+    public boolean isLabels() {
+        return labels;
+    }
+
+    public void setLabels(boolean labels) {
+        this.labels = labels;
+    }
 
     public SistemaSolar() {
 
@@ -281,6 +291,7 @@ public class SistemaSolar extends JPanel {
         tempo.schedule(new temp_urano(), 0, 200);
         tempo.schedule(new temp_netuno(), 0, 400);
 
+        this.labels = true;
     }
 
     @Override
@@ -348,44 +359,48 @@ public class SistemaSolar extends JPanel {
         g.drawOval((largura / 2) - ((r_netuno * 6) / 2), (altura / 2) - ((r_netuno * 2) / 2), r_netuno * 6, r_netuno * 2); //desenha tragetoria
         g.drawImage(netuno, x_netuno + dx_netuno, y_netuno + dy_netuno, xtam_netuno, ytam_netuno, this);
 
-        //Texto com o nome do planeta
-        g.drawString("Mercúrio", x_merc + dx_merc, y_merc + dy_merc);
+        g.drawString("PRESSIONE [ESPAÇO]: EXIBIR/OCULTAR RÓTULOS", 50, (int) (this.altura - (this.altura * 0.15)));
+        
+        if (this.labels) {
 
-        //Texto com o nome do planeta
-        g.drawString("Venus", x_venus + dx_venus, y_venus + dy_venus);
+            //Texto com o nome do planeta
+            g.drawString("Mercúrio", x_merc + dx_merc, y_merc + dy_merc);
 
-        //Texto com o nome do planeta
-        g.drawString("Terra", x_terra + dx_terra, y_terra + dy_terra);
+            //Texto com o nome do planeta
+            g.drawString("Venus", x_venus + dx_venus, y_venus + dy_venus);
 
-        //Texto com o nome do planeta
-        g.drawString("Lua", x_lua + dx_lua, y_lua + dy_lua);
+            //Texto com o nome do planeta
+            g.drawString("Terra", x_terra + dx_terra, y_terra + dy_terra);
 
-        //Texto com o nome do planeta
-        g.drawString("Marte", x_marte + dx_marte, y_marte + dy_marte);
+            //Texto com o nome do planeta
+            g.drawString("Lua", x_lua + dx_lua, y_lua + dy_lua);
 
-        //Texto com o nome do planeta
-        g.drawString("Júpiter", x_jupiter + dx_jupiter, y_jupiter + dy_jupiter);
+            //Texto com o nome do planeta
+            g.drawString("Marte", x_marte + dx_marte, y_marte + dy_marte);
 
-        //Texto com o nome do planeta
-        g.drawString("L1", x_l1 + dx_l1, y_l1 + dy_l1);
-        g.drawString("L2", x_l2 + dx_l2, y_l2 + dy_l2);
-        g.drawString("L3", x_l3 + dx_l3, y_l3 + dy_l3);
-        g.drawString("L4", x_l4 + dx_l4, y_l4 + dy_l4);
-        g.drawString("LUAS DE JÚPITER:", 50, 100);
-        g.drawString("L1: Lo", 50, 115);
-        g.drawString("L2: Europa", 50, 130);
-        g.drawString("L3: Ganímedes", 50, 145);
-        g.drawString("L4: Calisto", 50, 160);
+            //Texto com o nome do planeta
+            g.drawString("Júpiter", x_jupiter + dx_jupiter, y_jupiter + dy_jupiter);
 
-        //Texto com o nome do planeta
-        g.drawString("Saturno", x_saturno + dx_saturno, y_saturno + dy_saturno);
+            //Texto com o nome do planeta
+            g.drawString("L1", x_l1 + dx_l1, y_l1 + dy_l1);
+            g.drawString("L2", x_l2 + dx_l2, y_l2 + dy_l2);
+            g.drawString("L3", x_l3 + dx_l3, y_l3 + dy_l3);
+            g.drawString("L4", x_l4 + dx_l4, y_l4 + dy_l4);
+            g.drawString("LUAS DE JÚPITER:", 50, 100);
+            g.drawString("L1: Lo", 50, 115);
+            g.drawString("L2: Europa", 50, 130);
+            g.drawString("L3: Ganímedes", 50, 145);
+            g.drawString("L4: Calisto", 50, 160);
 
-        //Texto com o nome do planeta
-        g.drawString("Urano", x_urano + dx_urano, y_urano + dy_urano);
+            //Texto com o nome do planeta
+            g.drawString("Saturno", x_saturno + dx_saturno, y_saturno + dy_saturno);
 
-        //Texto com o nome do planeta
-        g.drawString("Netuno", x_netuno + dx_netuno, y_netuno + dy_netuno);
-        //        -------
+            //Texto com o nome do planeta
+            g.drawString("Urano", x_urano + dx_urano, y_urano + dy_urano);
+
+            //Texto com o nome do planeta
+            g.drawString("Netuno", x_netuno + dx_netuno, y_netuno + dy_netuno);
+        }
     }
 
     private class temp_mercurio extends TimerTask {
